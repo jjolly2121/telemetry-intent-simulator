@@ -1,5 +1,7 @@
 # telemetry-intent-execution-simulator
 
+[![Tests](https://github.com/jjolly2121/telemetry-intent-simulator-/actions/workflows/tests.yml/badge.svg)](https://github.com/jjolly2121/telemetry-intent-simulator-/actions/workflows/tests.yml)
+
 ## Intent-Driven Execution with Telemetry Feedback
 
 ### Overview
@@ -79,6 +81,7 @@ The dashed boundary represents the **onboard autonomous execution system**, whil
 | `main.py` | Runs a fixed-cycle simulation and prints telemetry |
 | `mission_control.py` | Real-time mission control dashboard server |
 | `simulation_bootstrap.py` | Shared simulation wiring and initial state |
+| `tests/` | Core behavior and repository hygiene checks |
 
 ---
 
@@ -128,12 +131,14 @@ This simulator is intentionally lightweight and educational. It is not intended 
 
 Install dependencies:
 ```bash
-/usr/local/bin/python3 -m pip install flask flask-socketio gevent gevent-websocket
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 ```
 
 Run the mission control dashboard:
 ```bash
-/usr/local/bin/python3 /Users/jeffreyjolly/telemetry-intent-simulator-/mission_control.py
+python mission_control.py
 ```
 
 Open:
@@ -143,7 +148,12 @@ http://localhost:5050
 
 Run the CLI simulation (prints telemetry frames):
 ```bash
-/usr/local/bin/python3 /Users/jeffreyjolly/telemetry-intent-simulator-/main.py
+python main.py
+```
+
+Run the test suite:
+```bash
+python -m unittest discover -s tests -v
 ```
 
 ---
@@ -163,7 +173,7 @@ It displays:
 ## Shared Simulation Setup
 
 Initial conditions are defined in:
-`/Users/jeffreyjolly/telemetry-intent-simulator-/simulation_bootstrap.py`
+`simulation_bootstrap.py`
 
 To change initial state, edit the bootstrap file, for example:
 ```python
@@ -172,6 +182,8 @@ system_state.temperature = 120.0
 ```
 
 Both `main.py` and `mission_control.py` read from this same bootstrap file.
+
+The default demonstration starts with critically low battery and elevated temperature so the first cycle exercises the safety override and recovery path.
 
 ---
 

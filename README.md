@@ -1,6 +1,6 @@
-# telemetry-intent-execution-simulator
+# Telemetry Intent Simulator
 
-[![Tests](https://github.com/jjolly2121/telemetry-intent-simulator-/actions/workflows/tests.yml/badge.svg)](https://github.com/jjolly2121/telemetry-intent-simulator-/actions/workflows/tests.yml)
+[![Tests](https://github.com/jjolly2121/telemetry-intent-simulator/actions/workflows/tests.yml/badge.svg)](https://github.com/jjolly2121/telemetry-intent-simulator/actions/workflows/tests.yml)
 
 ## Intent-Driven Execution with Telemetry Feedback
 
@@ -161,6 +161,9 @@ python -m unittest discover -s tests -v
 ## Mission Control Dashboard
 
 The dashboard is read-only and streams telemetry in real time via WebSockets.
+
+![Mission control dashboard](docs/images/mission-control-dashboard.png)
+
 It displays:
 - System state (position, battery, temperature, mode)
 - Policy decisions (selected intent, scores, override, lock)
@@ -190,3 +193,7 @@ The default demonstration starts with critically low battery and elevated temper
 ## Author Notes
 
 This project was designed as a learning exercise in systems architecture and observability, with inspiration drawn from safety-critical systems, distributed execution engines, and analytics platforms.
+
+## License
+
+The original source code is available under the [MIT License](LICENSE).

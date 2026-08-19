@@ -13,7 +13,7 @@ def main():
     # --------------------------------
     # Print Telemetry
     # --------------------------------
-    for frame in telemetry_bus.get_frames():  # ← get_frames not get_events
+    for frame in telemetry_bus.get_frames():
         print(frame)
 
 

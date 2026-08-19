@@ -11,13 +11,10 @@ def build_simulation():
     Single source of truth for simulation wiring and initial conditions.
     Edit initial state or intents here to affect both main.py and mission_control.py.
     """
+    # Default demonstration scenario: critical battery and elevated temperature.
     system_state = SystemState()
-    # main.py
     system_state.battery_level = 4.0
     system_state.temperature = 120.0
-
-    # Example: set initial conditions here if needed
-    # system_state.battery_level = 4.0
 
     intent_manager = IntentManager()
     state_engine = StateEngine(system_state)
